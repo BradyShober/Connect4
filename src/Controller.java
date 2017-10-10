@@ -141,7 +141,7 @@ public class Controller {
 		}
 		
 		ArrayList<Model.Space> diagonal = new ArrayList<Model.Space>();
-		for(int rowStart = 0; rowStart < model.getHeight()-4; rowStart++) {
+		for(int rowStart = 0; rowStart < model.getHeight()-size; rowStart++) {
 			int r, c;
 			for(r = rowStart, c = 0; r < model.getHeight() && c < model.getWidth(); r++, c++) {
 				diagonal.add(board.get(r).get(c));
@@ -149,6 +149,7 @@ public class Controller {
 			if(isWin(diagonal)) {
 				return;
 			}
+			diagonal.clear();
 		}
 		//Check diagonal from top left to bottom right
 		for(int i = 0; i < size; i++) {
@@ -182,6 +183,7 @@ public class Controller {
 				return true;
 			}
 		}
+		count = 0;
 		for(Model.Space space: check) {
 			if(space==Model.Space.PLAYERTWO) {
 				count++;
