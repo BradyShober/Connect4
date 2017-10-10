@@ -20,7 +20,7 @@ public class Controller {
 		sc = new Scanner(System.in);
 		while(true) {
 			try {
-				System.out.print("What size board? (3, 4, or 5): ");
+				System.out.print("What version of Connect would you like to play? (3, 4, or 5): ");
 				int s = sc.nextInt();
 				if(s > 2 && s < 6) {
 					setUpGame(s);
