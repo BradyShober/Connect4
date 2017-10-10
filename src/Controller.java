@@ -163,12 +163,13 @@ public class Controller {
 	private boolean isWin(ArrayList<Model.Space> check) {
 		int count = 0;
 		for(Model.Space space: check) {
-			if(space==Model.Space.PLAYERONE) {
+			if(space == Model.Space.PLAYERONE) {
 				count++;
 			}else {
 				count = 0;
 			}
 			if(count >= model.getSize()) {
+				setComplete(true);
 				return true;
 			}
 		}
@@ -179,6 +180,7 @@ public class Controller {
 				count = 0;
 			}
 			if(count >= model.getSize()) {
+				setComplete(true);
 				return true;
 			}
 		}
