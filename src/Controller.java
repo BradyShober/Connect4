@@ -139,24 +139,27 @@ public class Controller {
 				row.clear();
 			}
 		}
-		
+		//Check diagonal from top left to bottom right
 		ArrayList<Model.Space> diagonal = new ArrayList<Model.Space>();
-		for(int rowStart = 0; rowStart < model.getHeight()-size; rowStart++) {
+		for(int rowStart = 0; rowStart < model.getHeight()-size+1; rowStart++) {
 			int r, c;
 			for(r = rowStart, c = 0; r < model.getHeight() && c < model.getWidth(); r++, c++) {
-				diagonal.add(board.get(r).get(c));
+				diagonal.add(board.get(c).get(r));
 			}
 			if(isWin(diagonal)) {
 				return;
 			}
 			diagonal.clear();
 		}
-		//Check diagonal from top left to bottom right
-		for(int i = 0; i < size; i++) {
-			diagonal.add(board.get(i).get(i));
-		}
-		if(isWin(diagonal)) {
-			return;
+		for (int colStart = 1; colStart < model.getWidth()-size; colStart++) {
+			int r, c;
+			for(r = 0, c = colStart; r < model.getHeight() && c < model.getWidth(); r++, c++) {
+				diagonal.add(board.get(c).get(r));
+			}
+			if(isWin(diagonal)) {
+				return;
+			}
+			diagonal.clear();
 		}
 		diagonal.clear();
 		int j = 0;
