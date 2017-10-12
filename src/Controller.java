@@ -188,12 +188,7 @@ public class Controller {
 			}
 		}
 		return false;
-		/*if(!check.contains(Model.Space.OPEN ) && (!check.contains(Model.Space.PLAYERONE )|| !check.contains(Model.Space.PLAYERTWO))) {
-			setComplete(true);
-			return true;
-		}else {
-			return false;
-		}*/
+		
 	}
 
 }
