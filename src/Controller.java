@@ -162,6 +162,27 @@ public class Controller {
 			diagonal.clear();
 		}
 		diagonal.clear();
+		//Check diagonal from bottom left to top right
+		for(int rowStart = model.getHeight()-size+1; rowStart >= 0; rowStart--) {
+			int r, c;
+			for(r = rowStart, c = 0; r >=0 && c < model.getWidth(); r--, c++) {
+				diagonal.add(board.get(c).get(r));
+			}
+			if(isWin(diagonal)) {
+				return;
+			}
+			diagonal.clear();
+		}
+		for (int colStart = model.getWidth()-size; colStart >= 1; colStart--) {
+			int r, c;
+			for(r = 0, c = colStart; r < model.getHeight() && c >=1; r++, c--) {
+				diagonal.add(board.get(c).get(r));
+			}
+			if(isWin(diagonal)) {
+				return;
+			}
+			diagonal.clear();
+		}
 		int j = 0;
 		//Check diagonal from bottom left to top right
 		for(int i = size-1; i >= 0; i--) {
