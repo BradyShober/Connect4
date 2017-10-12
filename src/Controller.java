@@ -176,19 +176,8 @@ public class Controller {
 	private boolean isWin(ArrayList<Model.Space> check) {
 		int count = 0;
 		for(Model.Space space: check) {
-			if(space == Model.Space.PLAYERONE) {
-				count++;
-			}else {
-				count = 0;
-			}
-			if(count >= model.getSize()) {
-				setComplete(true);
-				return true;
-			}
-		}
-		count = 0;
-		for(Model.Space space: check) {
-			if(space==Model.Space.PLAYERTWO) {
+			if((getPlayerTurn() == Player.ONE && space == Model.Space.PLAYERONE) ||
+					(getPlayerTurn() == Player.TWO && space == Model.Space.PLAYERTWO)) {
 				count++;
 			}else {
 				count = 0;
