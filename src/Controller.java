@@ -183,15 +183,6 @@ public class Controller {
 			}
 			diagonal.clear();
 		}
-		int j = 0;
-		//Check diagonal from bottom left to top right
-		for(int i = size-1; i >= 0; i--) {
-			diagonal.add(board.get(j).get(i));
-			j++;
-		}
-		if(isWin(diagonal)) {
-			return;
-		}
 	}
 	
 	private boolean isWin(ArrayList<Model.Space> check) {
