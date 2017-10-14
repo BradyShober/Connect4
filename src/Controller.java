@@ -55,12 +55,10 @@ public class Controller {
 	}
 	
 	public void requestInput() {
-		int size = model.getSize();
+		int size = model.getWidth();
 		Player player = getPlayerTurn();
-		String p = "";
 		if(player == Player.ONE) {
-			p = "Player 1 ";
-			System.out.print(p + "choose a row 1 - " + size + ": ");
+			System.out.print("Choose a row 1 - " + size + ": ");
 			while(true) {
 				try {
 				int column = sc.nextInt();
