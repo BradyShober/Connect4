@@ -12,7 +12,7 @@ public class AI {
 		Random rand = new Random();
 		int n = 0;
 		do {
-		n = rand.nextInt(model.getSize());
+		n = rand.nextInt(model.getWidth());
 		}while(model.isColumnFull(n));
 			
 		
