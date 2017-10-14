@@ -163,7 +163,7 @@ public class Controller {
 		}
 		diagonal.clear();
 		//Check diagonal from bottom left to top right
-		for(int rowStart = model.getHeight()-size+1; rowStart >= 0; rowStart--) {
+		for(int rowStart = model.getHeight()-size+2; rowStart >= 0; rowStart--) {
 			int r, c;
 			for(r = rowStart, c = 0; r >=0 && c < model.getWidth(); r--, c++) {
 				diagonal.add(board.get(c).get(r));
@@ -173,9 +173,9 @@ public class Controller {
 			}
 			diagonal.clear();
 		}
-		for (int colStart = model.getWidth()-size; colStart >= 1; colStart--) {
+		for (int colStart = model.getWidth()-size; colStart < model.getWidth(); colStart++) {
 			int r, c;
-			for(r = 0, c = colStart; r < model.getHeight() && c >=1; r++, c--) {
+			for(r = model.getHeight() - 1, c = colStart; r >= 0 && c < model.getWidth(); r--, c++) {
 				diagonal.add(board.get(c).get(r));
 			}
 			if(isWin(diagonal)) {
