@@ -7,6 +7,7 @@ public class Controller {
 	private Scanner sc;
 	private Model model;
 	private View view;
+	private AI ai;
 	private boolean complete;
 	private boolean tie;
 	
@@ -39,6 +40,7 @@ public class Controller {
 
 	private void setUpGame(int s) {
 		model = new Model(this);
+		ai = new AI(model);
 		model.setSize(s);
 		view = new View(model, this);
 		model.createBoard();
@@ -58,31 +60,33 @@ public class Controller {
 		String p = "";
 		if(player == Player.ONE) {
 			p = "Player 1 ";
-		}else {
-			p = "Player 2 ";
-		}
-		System.out.print(p + "choose a row 1 - " + size + ": ");
-		while(true) {
-			try {
-			int column = sc.nextInt();
-			if (column > 0 && column <= model.getWidth()) {
-				if(!model.isColumnFull(column - 1)) {
-					model.addSpace(column - 1);
-					break;
+			System.out.print(p + "choose a row 1 - " + size + ": ");
+			while(true) {
+				try {
+				int column = sc.nextInt();
+				if (column > 0 && column <= model.getWidth()) {
+					if(!model.isColumnFull(column - 1)) {
+						model.addSpace(column - 1);
+						break;
+					}else {
+						System.out.print("Column is full, make another choice: ");
+						continue;
+					}
 				}else {
-					System.out.print("Column is full, make another choice: ");
+					System.out.print("Choice is not a valid column, make another choice: ");
 					continue;
 				}
-			}else {
-				System.out.print("Choice is not a valid column, make another choice: ");
-				continue;
+				
+				}catch(InputMismatchException e) {
+					System.out.print("That is not a valid number, make another choice: ");
+					continue;
+				}
 			}
-			
-			}catch(InputMismatchException e) {
-				System.out.print("That is not a valid number, make another choice: ");
-				continue;
-			}
+		}else {
+			int choice = ai.makeChoice();
+			model.addSpace(choice);
 		}
+		
 	}
 	
 	public boolean isComplete() {return complete;}
