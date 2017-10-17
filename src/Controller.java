@@ -54,38 +54,6 @@ public class Controller {
 		}
 	}
 	
-	public void requestInput() {
-		int size = model.getWidth();
-		Player player = getPlayerTurn();
-		if(player == Player.ONE) {
-			System.out.print("Choose a row 1 - " + size + ": ");
-			while(true) {
-				try {
-				int column = sc.nextInt();
-				if (column > 0 && column <= model.getWidth()) {
-					if(!model.isColumnFull(column - 1)) {
-						model.addSpace(column - 1);
-						break;
-					}else {
-						System.out.print("Column is full, make another choice: ");
-						continue;
-					}
-				}else {
-					System.out.print("Choice is not a valid column, make another choice: ");
-					continue;
-				}
-				
-				}catch(InputMismatchException e) {
-					System.out.print("That is not a valid number, make another choice: ");
-					continue;
-				}
-			}
-		}else {
-			int choice = ai.makeChoice();
-			model.addSpace(choice);
-		}
-		
-	}
 	
 	public boolean isComplete() {return complete;}
 	
