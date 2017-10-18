@@ -7,7 +7,6 @@ public class Controller {
 	private Scanner sc;
 	private Model model;
 	private View view;
-	private AI ai;
 	private boolean complete;
 	private boolean tie;
 	
@@ -40,7 +39,6 @@ public class Controller {
 
 	private void setUpGame(int s) {
 		model = new Model(this);
-		ai = new AI(model);
 		model.setSize(s);
 		view = new View(model, this);
 		model.createBoard();
